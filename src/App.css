@@ -25,12 +25,12 @@
   text-align: center;
 }
 
-.country-list{
-  display : flex;
+.country-list {
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
-.app h1{
-  text-align:center;
+.App h1 {
+  text-align: center;
 }
