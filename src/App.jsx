@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
-      .then((data) => setCountries(data))
+      .then((data) => {
+        setCountries(data);
+        setLoading(false); // Update loading state when data is fetched
+      })
       .catch((error) => console.log("Error fetching data: ", error));
   }, []);
 
@@ -26,14 +30,19 @@ function App() {
   const cardStyle = {
     display: "flex",
     flexDirection: "column",
-    jusifyContent: "center",
-    alignItem: "center",
+    justifyContent: "center",
+    alignItems: "center",
     width: "200px",
     margin: "10px",
     padding: "10px",
     border: "1px solid #ccc",
     borderRadius: "10px",
   };
+
+  // Show loading indicator while data is being fetched
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div style={containerStyle}>
@@ -50,4 +59,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
