@@ -30,3 +30,7 @@
   flex-direction: row;
   flex-wrap: wrap
 }
+
+.app h1{
+  text-align:center;
+}
